@@ -1,0 +1,12 @@
+script:
+  - cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install
+  - cmake --build _build
+  - cmake --build _build --target _install
+
+addons:
+  apt:
+    sources:
+      - george-edison55-precise-backports
+    packages:
+      - cmake
+      - cmake-data
