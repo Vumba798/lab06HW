@@ -1,12 +1,20 @@
-script:
-  - cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install
-  - cmake --build _build
-  - cmake --build _build --target install
+language: cpp
+compiler:
+  - gcc
+  - clang
+
+os:
+ - linux
 
 addons:
   apt:
     sources:
-      - george-edison55-precise-backports
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-precise-3.6
     packages:
-      - cmake
-      - cmake-data
+      - g++-7
+      - clang-3.6
+
+script:
+- cmake CMakeLists.txt
+- cmake --build .
