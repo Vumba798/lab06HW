@@ -1,0 +1,3 @@
+/home/alexey/Vumba798/workspace/projects/lab03HW/lab03/formatter_lib/_build/CMakeFiles/rebuild_cache.dir
+/home/alexey/Vumba798/workspace/projects/lab03HW/lab03/formatter_lib/_build/CMakeFiles/formatter.dir
+/home/alexey/Vumba798/workspace/projects/lab03HW/lab03/formatter_lib/_build/CMakeFiles/edit_cache.dir
