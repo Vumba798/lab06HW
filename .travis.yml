@@ -1,20 +1,18 @@
 language: cpp
-compiler:
-  - gcc
-  - clang
 
 os:
- - linux
+    - linux
 
 addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      - llvm-toolchain-precise-3.6
-    packages:
-      - g++-7
-      - clang-3.6
+    apt:
+        - cmake
+        - cmake-data
+
+compiler:
+    - clang
+    - gcc
 
 script:
-- cmake CMakeLists.txt
-- cmake --build .
+    - cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=install
+    - cmake --build build/
+    - cmake --build build/ --target install
