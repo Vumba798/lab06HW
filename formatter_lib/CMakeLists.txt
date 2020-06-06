@@ -1,6 +1,16 @@
 cmake_minimum_required(VERSION 3.4)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-project(formatter)
-add_library(formatter STATIC formatter.cpp)
-target_include_directories(formatter PUBLIC )
+project(formatter_lib)
+
+set(CMAKE_CXX_STANDART 11)
+set(CMAKE_CXX_STANDART_REQUIRED ON)
+
+if (NOT TARGET formatter)
+    add_library(formatter STATIC ${CMAKE_CURRENT_LIST_DIR}/formatter.cpp)
+
+    install(TARGETS formatter
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+    )
+endif()
+
+include_directories(${CMAKE_CURRENT_LIST_DIR})
