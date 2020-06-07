@@ -1,26 +1,20 @@
-# выбираем две ОС (хотя на момент написания отчета Travis CI поддерживает и Windows)
-os:
-    - linux
-    - osx
-
-# язык
 language: cpp
 
-# два компилятора, как в задании
+os:
+    - linux
+
+
 compiler:
     - clang
     - gcc
 
-# глубина клонирования
 git:
     depth: 1
 
 tags: true
 
-# Запускаем на VM
-sudo: true
+udo: true
 
-# нужные аддоны
 addons:
     apt:
         - cmake
@@ -47,5 +41,5 @@ deploy:
         - "install/packages/*.tar.gz"
         - "install/packages/*.zip"
    skip_cleanup: true
-      on:
+    on:
         tags: true
