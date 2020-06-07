@@ -2,7 +2,7 @@ language: cpp
 
 os:
     - linux
-
+    - osx
 
 compiler:
     - clang
@@ -32,7 +32,7 @@ script:
 
 deploy:
     provider: releases
-    api_key: 2cb8214a2c59f28181b253891d344e0ccdfc91be
+    api_key: ae61fe28ac5f59655c6edfcdcfb9d2a0dce3166a
     file_glob: true
     file:
         - "install/packages/*.deb"
