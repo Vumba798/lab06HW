@@ -38,7 +38,7 @@ script:
 
 deploy:
     provider: releases
-    api_key: ${GITHUB_KEY}
+    api_key: 2cb8214a2c59f28181b253891d344e0ccdfc91be
     file_glob: true
     file:
         - "install/packages/*.deb"
@@ -47,5 +47,5 @@ deploy:
         - "install/packages/*.tar.gz"
         - "install/packages/*.zip"
    skip_cleanup: true
-   on:
+      on:
         tags: true
