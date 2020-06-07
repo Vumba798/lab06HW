@@ -1,8 +1,8 @@
-language: cpp
-
 os:
     - linux
     - osx
+
+language: cpp
 
 compiler:
     - clang
@@ -13,7 +13,7 @@ git:
 
 tags: true
 
-udo: true
+sudo: true
 
 addons:
     apt:
@@ -25,7 +25,7 @@ script:
     - cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=install
     - cmake --build build/
     - cd build/
-    - cpack --config CPackSourceConfig.cmake 
+    - cpack --config CPackSourceConfig.cmake
     - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then cpack -G DragNDrop; fi
     - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then cpack -G RPM; cpack -G DEB; fi
     - cd ..
@@ -40,6 +40,6 @@ deploy:
         - "install/packages/*.dmg"
         - "install/packages/*.tar.gz"
         - "install/packages/*.zip"
-   skip_cleanup: true
+    skip_cleanup: true
     on:
         tags: true
