@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.4)
-project(formatter_ex_lib)
 
 set(CMAKE_CXX_STANDART 11)
 set(CMAKE_CXX_STANDART_REQUIRED ON)
@@ -11,10 +10,12 @@ if (NOT TARGET formatter_ex)
 
     target_link_libraries(formatter_ex formatter)
 
-    install(TARGETS formatter_ex
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
-    )
-endif()
+    if (INSTALL_FORMATTER_EX)
+        install(TARGETS formatter_ex
+            LIBRARY DESTINATION lib
+            ARCHIVE DESTINATION lib
+        )
+    endif(INSTALL_FORMATTER_EX)
+endif(NOT TARGET formatter_ex)
 
 include_directories(${CMAKE_CURRENT_LIST_DIR})
