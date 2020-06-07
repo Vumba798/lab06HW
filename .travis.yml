@@ -32,7 +32,7 @@ script:
 
 deploy:
     provider: releases
-    api_key: ae61fe28ac5f59655c6edfcdcfb9d2a0dce3166a
+    api_key: f96bba7912bb684e9ed41056b173b186137f6e16
     file_glob: true
     file:
         - "install/packages/*.deb"

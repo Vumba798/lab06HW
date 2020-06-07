@@ -37,7 +37,7 @@ deploy:
     # для шифрования данных (в данном случае, ключа GitHub).
     # здесь явно указано, что токен, который я передал, зашифрован, и AppVeyor сам его расшифрует
     auth_token: 
-        secure: c3276fbe39de0ef63937732125146974d751f123
+        secure: 7NV1JX0A/d+18YzA0j99bQaCQ2G3JuBZg9iXkgSTBvl6OS62c6TilrwPScgF/Tjc
     draft: false
     prerelease: false
     on:
