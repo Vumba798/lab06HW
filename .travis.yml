@@ -1,18 +1,51 @@
-language: cpp
-
+# выбираем две ОС (хотя на момент написания отчета Travis CI поддерживает и Windows)
 os:
     - linux
+    - osx
 
-addons:
-    apt:
-        - cmake
-        - cmake-data
+# язык
+language: cpp
 
+# два компилятора, как в задании
 compiler:
     - clang
     - gcc
 
+# глубина клонирования
+git:
+    depth: 1
+
+tags: true
+
+# Запускаем на VM
+sudo: true
+
+# нужные аддоны
+addons:
+    apt:
+        - cmake
+        - cmake-data
+        - rpm
+
 script:
     - cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=install
     - cmake --build build/
-    - cmake --build build/ --target install
+    - cd build/
+    - cpack --config CPackSourceConfig.cmake 
+    - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then cpack -G DragNDrop; fi
+    - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then cpack -G RPM; cpack -G DEB; fi
+    - cd ..
+
+deploy:
+    provider: releases
+    api_key: ${GITHUB_KEY}
+    file_glob: true
+    file:
+        - "install/packages/*.deb"
+        - "install/packages/*.rpm"
+        - "install/packages/*.dmg"
+        - "install/packages/*.tar.gz"
+        - "install/packages/*.zip"
+   skip_cleanup: true
+   on:
+        tags: true
